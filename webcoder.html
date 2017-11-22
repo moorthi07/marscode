@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+</head>
+<body>
+
+		<button id="files" class="btn btn-success  " > Files</button>
+		<div id="fileresult" style="float:left;width:30%">Files </div>
+	<div id="jstree_demo_div" style="float:left;width:30%"> <ul>
+			
+		<li>Root node 1
+		  <ul>
+			<li id="child_node_1">Child node 1</li>
+			<li>Child node 2</li>
+		  </ul>
+		</li>
+		<li>Root node 2</li>
+	  </ul>
+	</div>
+
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+<script>
+ 		$(document).ready(function() { 
+			 $('#jstree_demo_div').jstree(); 
+
+			 $('#files').click(function(){
+
+				console.log('content', editor.value);
+				// alert('ok');
+	// 			$.ajax({url: "/dashboard/__dpd__files-manager", success: function(result){
+	   
+	// 				$("#fileresult").text(JSON.stringify(result));
+    // }});
+			 });
+			});
+</script>
+
+<h2>Monaco Editor Sample</h2>
+
+<div id="container" style="float:left;width:800px;height:600px;border:1px solid grey"></div>
+
+
+<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+<script>
+	$(document).ready(function(){	
+		require.config({ paths: { 'vs': '../node_modules/monaco-editor/min/vs' }});
+		
+			require(['vs/editor/editor.main'], function() {
+				var editor = monaco.editor.create(document.getElementById('container'), {
+					value: [
+						'function x() {',
+						'\tconsole.log("Hello world!");',
+						'}'
+					].join('\n'),
+					language: 'javascript'
+				});
+			});
+
+	function saveI() 
+        {
+            getVal = window.editor.getValue() 
+            alert(getVal)
+        }
+        document.getElementById('container').onclick = saveI;
+
+});
+	</script>
+
+</body>
+</html>

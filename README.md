@@ -1,2 +1,8 @@
-# marscode
-Web code editor with Monaco code editor, JQuery file tree browser , nodejs 
+# node-file-tree
+Node.js File Tree
+
+
+To run:
+```
+node index
+```
