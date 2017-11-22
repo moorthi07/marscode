@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>MarsCoder - File Browser and code editor</title>
+    <link rel='stylesheet' type="text/css" href='css/style.css' />
+    <!-- dashboard theme -->
+    <link rel='stylesheet' type="text/css" href='css/themes.css' />
+    <link href="css/file-tree.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+
+</head>
+
+<body> 
+        <div id="body-container" class="">
+                <div id="resource-sidebar-container"> 
+                        <h3>MarsCode Editor</h3>
+                  <div class="well ">
+                    <div class="section-header">
+                        
+                      <h3>Files</h3>
+                      <div class="btn-group">
+                        <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">Add New
+                          <i class="icon-white icon-plus"></i>
+                          <!-- &nbsp;<span class="caret"></span> -->
+                        </a>
+                        <!-- <ul id="resource-types" class="dropdown-menu"> 
+                        </ul> -->
+                      </div>
+                    </div> 
+
+                        <!-- <div id="fileresult" style="float:left;width:30%">Files </div>  -->
+                        <section role="main">
+                                <nav>
+                                    <ul id="fileTree" class="list">
+                                        <li>
+                                            <a class="dir" href="api">root</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </section> 
+                    <ul class="nav nav-stacked type-icons" id="resource-sidebar">
+                    </ul>
+                  </div>
+                </div>
+                <div id="main-container">
+                      
+                        <button id="save" class="btn btn-success  "> Save</button>
+                        <!-- <label class="checkbox-inline"><input type="checkbox" id="save" value="">Auto Save</label> -->
+                          
+                        <div id="container" style="width:700px;height:600px;border:5px solid rgba(134, 155, 116, 0.74)"></div>
+                         
+                </div>
+              </div>
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script> -->
+
+    <script src="js/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        "use strict";
+        var editor = null;
+
+        $(document).ready(function () {
+            require.config({
+                paths: {
+                    'vs': 'js/monaco-editor/min/vs'
+                }
+            });
+            require(['vs/editor/editor.main'], function () {
+                editor = monaco.editor.create(document.getElementById('container'), {
+                    value: [
+                        'function x() {',
+                        '\tconsole.log("Hello world!");',
+                        '}'
+                    ].join('\n'),
+                    language: 'javascript'
+                });
+            });
+
+            // function saveI() {
+            //     var getVal = window.editor.getValue();  
+            //     var oldModel = editor.getModel();
+            //     var newModel = monaco.editor.createModel('data');
+            //     editor.setModel(newModel);
+            // }
+            // document.getElementById('container').onclick = saveI;
+
+        });
+    </script>
+
+
+    <!-- <script>
+        $(document).ready(function () {
+            //  $('#jstree_demo_div').jstree(); 
+
+            $('#files').click(function () {
+                var oldModel = editor.getModel();
+                var newModel = monaco.editor.createModel('data');
+                editor.setModel(newModel);
+            });
+        });
+    </script> -->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.js"></script> -->
+    <script src="js/file-tree.js"></script>
+
+</body>
+
+</html> 

@@ -1,0 +1,69 @@
+#fileTree {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#fileTree a {
+    text-decoration: none;
+    color: #000;
+}
+
+#fileTree ul {
+    padding: 0px;
+    margin: -6px 0px;
+    list-style-type: none;
+    background-repeat: repeat-y;
+    background-position: 6px 0px;
+}
+
+#fileTree li {
+    padding: 6px 0px 0px 16px;
+    margin: 0px 6px;
+    display: block;
+    position: relative;
+    background: url('../assets/line.horizontal.png') -74px 14px, url('../assets/line.vertical.png') 0px -74px;
+    background-repeat: no-repeat;
+}
+
+#fileTree li.opened:not(:last-child)::before {
+    content: '';
+    width: 2px;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background-image: url('../assets/line.vertical.png');
+    margin: 9px -16px;
+}
+
+#fileTree li:last-child {
+    background: url('../assets/line.horizontal.png') -72px 14px, url('../assets/line.vertical.png') 0px -84px;
+    background-repeat: no-repeat;
+    margin-bottom: 6px;
+}
+
+#fileTree li a.file:before,
+#fileTree li a.dir:before,
+#fileTree li.opened a.dir:before  {
+    content: '';
+    display: inline-block;
+    position: relative;
+    height: 16px;
+    margin-right: 4px;
+    background-size: contain;
+}
+
+#fileTree li a.file:before {
+    width: 15px;
+    background-image: url('../assets/f.png');
+}
+
+#fileTree li a.dir:before {
+    width: 15px;
+    background-image: url('../assets/folder.png');
+}
+
+#fileTree li.opened>a.dir:before {
+    width: 18px;
+    background-image: url('../assets/folder.open.png');
+}
