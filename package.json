@@ -1,11 +1,33 @@
 {
-  "name": "webcoder",
-  "version": "1.0.0",
-  "description": "webcoder",
+  "name": "marscode",
+  "version": "1.0.1-0",
+  "description": "marscode",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": {
+    "name": "Moorthi PV",
+    "url": "https://github.com/moorthi07"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moorthi07/marscode.git"
+  },
+  "keywords": [
+    "web editor",
+    "code editor",
+    "browser  editor",
+    "web visualcode",
+    "web monaco-editor",
+    "node files editor",
+    "web files manager",
+    "web ide",
+    "node filetree"
+  ],
+  "bugs": {
+    "url": "https://github.com/moorthi07/marscode/issues"
+  },
+  "homepage": "https://github.com/moorthi07/marscode#readme"
 }

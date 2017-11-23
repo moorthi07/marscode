@@ -1,4 +1,6 @@
+'use strict'
 $.fn.fileTree = function(api_url){
+    var $curnode=null;
     function _renderTree($node, diretories, files){
         var $newList = $('<ul class="list"></ul>');
         $node.after();
@@ -35,22 +37,17 @@ $.fn.fileTree = function(api_url){
 
     $(this).on('click', 'a.file', function(){
         event.preventDefault();
+        $($curnode).toggleClass("clicked");
+        $(this).toggleClass( "clicked" );
         var $node = $(this); 
+        $curnode=$(this);
 
         $.ajax({
             type: 'GET',
-            url: api_url+'/'+$node.attr('href'),
-            // data to be added to query string:
-            // data: { name: 'Zepto.js' },
-            // type of data we are expecting in return:
-            // dataType: 'json',
+            url: api_url+'/'+$node.attr('href'), 
             timeout: 300,
             // context: $('body'),
-            success: function(data){
-              // Supposing this JSON payload was received:
-              //   {"project": {"id": 42, "html": "<div>..." }}
-              // append the HTML to context object.
-            //   this.append(data.project.html)
+            success: function(data){ 
             console.log(data);
             var oldModel = editor.getModel();
             var newModel = monaco.editor.createModel(data);
@@ -63,8 +60,10 @@ $.fn.fileTree = function(api_url){
           })  
     });
 
-    $(this).on('click', 'a.dir', function(){
+    
+    $(this).on('click', 'a.dir', function(){ 
         event.preventDefault();
+        $(this).toggleClass( "clicked" )
         var $node = $(this);
 
         if($node.parent().hasClass('opened')){
@@ -72,6 +71,28 @@ $.fn.fileTree = function(api_url){
         }else{
             _openDir($node);
         }
+    });
+
+    $('#save').click(function(){
+        event.preventDefault(); 
+        var $node = $(this);
+console.log('editor.getModel', editor.getValue());
+console.log('curnode',$curnode);
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            url: api_url+'/'+ $curnode.attr('href'), 
+            data:  editor.getValue() , 
+            timeout: 300, 
+            success: function(data){ 
+            alert('Saved.');
+            },
+            error: function(xhr, type){
+              alert('Ajax error!');
+              console.log(xhr);
+            }
+          })  
+       
     });
 };
 

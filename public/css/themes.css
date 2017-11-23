@@ -46,7 +46,7 @@ li.component-item {
     background: url(../img/fabric.png);
 }
 
-.ace-deployd .ace_gutter {
-    background: #e6e6e6;
-    color: #444;
-}
+ .clicked{
+     background-color: rgb(205, 235, 207); 
+     padding: 3px;
+ }
