@@ -16,6 +16,7 @@ var requestListener = function (request, response) {
     var path = process.cwd();
     var delay = (0.5 + (Math.random() / 2)) * 100;
 
+    request.url = request.url.replace(/(\.\.)/g, '');
     if (request.url.indexOf('/api') === 0) {
 
         path += querystring.unescape(request.url).slice(4);
