@@ -19,7 +19,7 @@ var requestListener = function (request, response) {
     request.url = request.url.replace(/(\.\.)/g, '');
     if (request.url.indexOf('/api') === 0) {
 
-        path += querystring.unescape(request.url).slice(4);
+        path += querystring.unescape(request.url).slice(4).replace(/(\.\.)/g, '');
 
         var pathStat = fs.lstatSync(path);
         console.log('reqbody', request.body);
